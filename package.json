@@ -1,0 +1,13 @@
+{
+  "name": "voting-app-api",
+  "version": "1.0.0",
+  "description": "Voting app api with mongodb",
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "serverless-python-requirements": "^5.1.0"
+  },
+  "devDependencies": {
+    "serverless-offline": "^6.1.2"
+  }
+}
