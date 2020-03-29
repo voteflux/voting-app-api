@@ -1,15 +1,28 @@
 
 # voting-app-api
 
+## Getting started
+
+Start MongoDB
+
+```
+sudo systemctl start mongod
+```
+
+Install requirements
 
 ```
 npm i --save serverless-python-requirements
 npm install serverless-offline --save-dev
-serverless offline
-
-
 ```
 
+Run serverless offline
+
+```
+serverless offline
+```
+
+Ctrl+C to stop *serverless offline*
 
 
 
