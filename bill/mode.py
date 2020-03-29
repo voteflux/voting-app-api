@@ -6,12 +6,17 @@ MONGODB = 'mongodb'
 MONGOCOLLECTION = 'mongocollection'
 URL = 'url'
 
-prod = True
+prod = False
 
 ms = {
-    MONGODB: os.environ['MONGO_DB_NAME'],
-    MONGOCOLLECTION: os.environ['MONGO_COLLECTION_NAME'],
-    URL: os.environ['MONGO_DB_URL'],
+    # MONGODB: os.environ['MONGO_DB_NAME'],
+    # MONGOCOLLECTION: os.environ['MONGO_COLLECTION_NAME'],
+    # URL: os.environ['MONGO_DB_URL'],
+
+    # For serverless Offline
+    MONGODB: "billsdb",
+    MONGOCOLLECTION: "bills",
+    URL: "localhost:27017",
 }
 
 if prod:
