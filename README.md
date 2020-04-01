@@ -1,7 +1,18 @@
-
 # voting-app-api
 
 ## Getting started
+
+```
+sudo apt-get install nodejs
+
+sudo apt-get install curl software-properties-common
+
+curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
+
+sudo npm install -g serverless
+```
+
+[Install MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-debian/#install-mongodb-community-edition)
 
 Start MongoDB
 
@@ -22,14 +33,11 @@ Run serverless offline
 serverless offline
 ```
 
-Ctrl+C to stop *serverless offline*
+Ctrl+C to stop _serverless offline_
 
-
-
----
+--------------------------------------------------------------------------------
 
 # Old notes
-
 
 ## Create the Mongo Atlas backend
 
@@ -39,60 +47,61 @@ Ctrl+C to stop *serverless offline*
 
 1. Install Serverless
 
-    ```
-    npm install -g serverless
-    ```
+  ```
+  npm install -g serverless
+  ```
 
 2. Install `serverless-python-requirements`
 
-    ```
-    npm i --save serverless-python-requirements
-    ```
+  ```
+  npm i --save serverless-python-requirements
+  ```
 
 3. Define necessary environment variables
 
-    Append this to your ~/.bash_profile
+  Append this to your ~/.bash_profile
 
-    ```
-    export MONGO_DB_USER=
-    export MONGO_DB_PASS=
-    export MONGO_DB_NAME=SampleDatabase
-    export MONGO_COLLECTION_NAME=SampleCollection
-    export MONGO_DB_URL=
-    ```
+  ```
+  export MONGO_DB_USER=
+  export MONGO_DB_PASS=
+  export MONGO_DB_NAME=SampleDatabase
+  export MONGO_COLLECTION_NAME=SampleCollection
+  export MONGO_DB_URL=
+  ```
 
 4. Deploy the API
 
-    ```
-    sls deploy
-    ```
+  ```
+  sls deploy
+  ```
 
-    Your results should look something like this:
-    ```
-    Serverless: Stack update finished...
-    Service Information
-    service: serverless-pymongo-item-api
-    stage: dev
-    region: us-east-1
-    stack: serverless-pymongo-item-api-dev
-    resources: 28
-    api keys:
-      None
-    endpoints:
-      POST - https://0xfyi15qci.execute-api.us-east-1.amazonaws.com/dev/item
-      GET - https://0xfyi15qci.execute-api.us-east-1.amazonaws.com/dev/item
-      GET - https://0xfyi15qci.execute-api.us-east-1.amazonaws.com/dev/item/{id}
-      DELETE - https://0xfyi15qci.execute-api.us-east-1.amazonaws.com/dev/item/{id}
-    functions:
-      create: serverless-pymongo-item-api-dev-create
-      list: serverless-pymongo-item-api-dev-list
-      get: serverless-pymongo-item-api-dev-get
-      delete: serverless-pymongo-item-api-dev-delete
-    layers:
-      None
-    Serverless: Removing old service artifacts from S3...
-    Serverless: Run the "serverless" command to setup monitoring, troubleshooting and testing.
-    ```
+  Your results should look something like this:
+
+  ```
+  Serverless: Stack update finished...
+  Service Information
+  service: serverless-pymongo-item-api
+  stage: dev
+  region: us-east-1
+  stack: serverless-pymongo-item-api-dev
+  resources: 28
+  api keys:
+  None
+  endpoints:
+  POST - https://0xfyi15qci.execute-api.us-east-1.amazonaws.com/dev/item
+  GET - https://0xfyi15qci.execute-api.us-east-1.amazonaws.com/dev/item
+  GET - https://0xfyi15qci.execute-api.us-east-1.amazonaws.com/dev/item/{id}
+  DELETE - https://0xfyi15qci.execute-api.us-east-1.amazonaws.com/dev/item/{id}
+  functions:
+  create: serverless-pymongo-item-api-dev-create
+  list: serverless-pymongo-item-api-dev-list
+  get: serverless-pymongo-item-api-dev-get
+  delete: serverless-pymongo-item-api-dev-delete
+  layers:
+  None
+  Serverless: Removing old service artifacts from S3...
+  Serverless: Run the "serverless" command to setup monitoring, troubleshooting and testing.
+  ```
 
 ## Test the API by Creating and Querying items
 
@@ -105,8 +114,8 @@ curl --request POST \
   --url http://localhost:3000/dev/bill \
   --header 'content-type: application/json' \
   --data '{
-	"attribute_1": "Pet",
-	"attribute_2": "Rock"
+    "attribute_1": "Pet",
+    "attribute_2": "Rock"
 }'
 ```
 
