@@ -7,7 +7,7 @@ from mode import *
 # Connection String
 client = pymongo.MongoClient(mongosettings[URL])
 db = client[mongosettings[MONGODB]]
-collection = db[mongosettings[MONGOCOLLECTION]]
+collection = db[mongosettings[USERSCOLLECTION]]
 
 
 def create(event, context):

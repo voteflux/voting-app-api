@@ -6,7 +6,7 @@ from mode import *
 # Connection String
 client = pymongo.MongoClient(mongosettings[URL])
 db = client[mongosettings[MONGODB]]
-collection = db[mongosettings[MONGOCOLLECTION]]
+collection = db[mongosettings[BILLSCOLLECTION]]
 
 
 def get(event, context):
