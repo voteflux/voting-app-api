@@ -2,7 +2,7 @@ import os
 
 USER = 'user'
 PWD = 'pwd'
-MONGODB = 'votoingdb'
+MONGODB = 'mongodb'
 BILLSCOLLECTION = 'billscollection'
 ISSUESCOLLECTION = 'issuescollection'
 RESULTSCOLLECTION = 'resultscollection'
@@ -18,12 +18,12 @@ ms = {
     # URL: os.environ['MONGO_DB_URL'],
 
     # For serverless Offline
-    MONGODB: "billsdb",
+    MONGODB: "votingdb",
     BILLSCOLLECTION: "bills",
-    BILLSCOLLECTION: "issues",
-    BILLSCOLLECTION: "results",
-    BILLSCOLLECTION: "users",
-    BILLSCOLLECTION: "votes",
+    ISSUESCOLLECTION: "issues",
+    RESULTSCOLLECTION: "results",
+    USERSCOLLECTION: "users",
+    VOTESCOLLECTION: "votes",
     URL: "localhost:27017",
 }
 
@@ -32,7 +32,11 @@ if prod:
         USER: os.environ['MONGO_DB_USER'],
         PWD: os.environ['MONGO_DB_PASS'],
         MONGODB: os.environ['MONGO_DB_NAME'],
-        MONGOCOLLECTION: os.environ['MONGO_COLLECTION_NAME'],
+        BILLSCOLLECTION: "bills",
+        ISSUESCOLLECTION: "issues",
+        RESULTSCOLLECTION: "results",
+        USERSCOLLECTION: "users",
+        VOTESCOLLECTION: "votes",
         URL: "mongodb+srv://" + usr + ":" + pwd + "@" +
         os.environ['MONGO_DB_URL'] + "/test?retryWrites=true&w=majority"
     }
