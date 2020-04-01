@@ -1,5 +1,6 @@
 import json
 import os
+import uuid
 import pymongo
 from mode import *
 
@@ -9,14 +10,20 @@ db = client[mongosettings[MONGODB]]
 collection = db[mongosettings[MONGOCOLLECTION]]
 
 
-def get(event, context):
-    # get bill_id to delete from path parameter
-    bill_id = event['pathParameters']['id']
+def create(event, context):
+    # get request body
+    data = json.loads(event['body'])
 
-    # delete bill from the database
-    bill = collection.find_one({"_id": bill_id})
+    # create bill to insert
+    bill = {
+        '_id': str(uuid.uuid1()),
+        'data': data,
+    }
 
-    # create a response
+    # write bill to database
+    collection.insert_one(bill)
+
+    # create response
     response = {
         "statusCode": 200,
         "body": json.dumps(bill)

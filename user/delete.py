@@ -1,6 +1,6 @@
 import os
 import pymongo
-from bill.mode import *
+from mode import *
 
 # Connection String
 client = pymongo.MongoClient(mongosettings[URL])

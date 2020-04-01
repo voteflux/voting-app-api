@@ -15,30 +15,13 @@ provider:
   environment:
     MONGO_DB_USER: None
     MONGO_DB_PASS: None
-    MONGO_DB_NAME: billsdb
+    MONGO_DB_NAME: votingdb
     MONGO_DB_URL: localhost:27017
-    MONGO_COLLECTION_NAME: billsserverless
   iamManagedPolicies:
     - "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 
 functions:
-  create:
-    handler: bill/create.create
-    events:
-      - http:
-          path: bill
-          method: post
-          cors: true
-
-  list:
-    handler: bill/list.list
-    events:
-      - http:
-          path: bill
-          method: get
-          cors: true
-
-  get:
+  getbill:
     handler: bill/get.get
     events:
       - http:
@@ -46,10 +29,42 @@ functions:
           method: get
           cors: true
 
-  delete:
-    handler: bill/delete.delete
+  listbill:
+    handler: bill/list.list
     events:
       - http:
-          path: bill/{id}
+          path: bill
+          method: get
+          cors: true
+
+  createuser:
+    handler: user/create.create
+    events:
+      - http:
+          path: user
+          method: post
+          cors: true
+
+  listuser:
+    handler: user/list.list
+    events:
+      - http:
+          path: user
+          method: get
+          cors: true
+
+  getuser:
+    handler: user/get.get
+    events:
+      - http:
+          path: user/{id}
+          method: get
+          cors: true
+
+  deleteuser:
+    handler: user/delete.delete
+    events:
+      - http:
+          path: user/{id}
           method: delete
           cors: true

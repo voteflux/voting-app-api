@@ -2,8 +2,12 @@ import os
 
 USER = 'user'
 PWD = 'pwd'
-MONGODB = 'mongodb'
-MONGOCOLLECTION = 'mongocollection'
+MONGODB = 'votoingdb'
+BILLSCOLLECTION = 'billscollection'
+ISSUESCOLLECTION = 'issuescollection'
+RESULTSCOLLECTION = 'resultscollection'
+USERSCOLLECTION = 'userscollection'
+VOTESCOLLECTION = 'votescollection'
 URL = 'url'
 
 prod = False
@@ -15,7 +19,11 @@ ms = {
 
     # For serverless Offline
     MONGODB: "billsdb",
-    MONGOCOLLECTION: "bills",
+    BILLSCOLLECTION: "bills",
+    BILLSCOLLECTION: "issues",
+    BILLSCOLLECTION: "results",
+    BILLSCOLLECTION: "users",
+    BILLSCOLLECTION: "votes",
     URL: "localhost:27017",
 }
 
