@@ -37,6 +37,22 @@ functions:
           method: get
           cors: true
 
+  getissue:
+    handler: issue/get.get
+    events:
+      - http:
+          path: issue/{id}
+          method: get
+          cors: true
+
+  listissue:
+    handler: issue/list.list
+    events:
+      - http:
+          path: issue
+          method: get
+          cors: true
+
   createuser:
     handler: user/create.create
     events:

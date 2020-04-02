@@ -1,5 +1,5 @@
 from user.create import create
-from bill.get import get
+from issue.get import get
 import json
 
 print(create({"body": json.dumps(
@@ -9,5 +9,5 @@ print(create({"body": json.dumps(
 
 print(get({"pathParameters":
            {
-               "id": ""
+               "id": "i0003"
            }}, None))
