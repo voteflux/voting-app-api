@@ -13,8 +13,8 @@ def list(event, context):
     # create response body object
     response_body = {}
 
-    # create array for reponse bills
-    response_body['response_bills'] = []
+    # create array for reponse users
+    response_body['response_users'] = []
 
     # return path parameters with filter key
     response_body['filter'] = event['multiValueQueryStringParameters']
@@ -25,10 +25,10 @@ def list(event, context):
         for parameter in event['multiValueQueryStringParameters']:
             query[parameter] = event['multiValueQueryStringParameters'][parameter][0]
 
-    # create list of bills
+    # create list of users
     cursor = collection.find(query)
     for document in cursor:
-        response_body['response_bills'].append(document)
+        response_body['response_users'].append(document)
 
     # create response
     response = {

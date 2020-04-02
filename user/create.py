@@ -14,19 +14,19 @@ def create(event, context):
     # get request body
     data = json.loads(event['body'])
 
-    # create bill to insert
-    bill = {
+    # create user to insert
+    user = {
         '_id': str(uuid.uuid1()),
         'data': data,
     }
 
-    # write bill to database
-    collection.insert_one(bill)
+    # write user to database
+    collection.insert_one(user)
 
     # create response
     response = {
         "statusCode": 200,
-        "body": json.dumps(bill)
+        "body": json.dumps(user)
     }
 
     # return response

@@ -9,13 +9,13 @@ collection = db[mongosettings[USERSCOLLECTION]]
 
 
 def delete(event, context):
-    # get bill_id to delete from path parameter
-    bill_id = event['pathParameters']['id']
+    # get user_id to delete from path parameter
+    user_id = event['pathParameters']['id']
 
-    # delete bill from the database
-    del_resp = collection.delete_one({"_id": bill_id})
+    # delete user from the database
+    del_resp = collection.delete_one({"_id": user_id})
 
-    # if no bill return 404
+    # if no user return 404
     if del_resp.deleted_count == 0:
 
         response = {

@@ -10,16 +10,16 @@ collection = db[mongosettings[USERSCOLLECTION]]
 
 
 def get(event, context):
-    # get bill_id to delete from path parameter
-    bill_id = event['pathParameters']['id']
+    # get user_id to delete from path parameter
+    user_id = event['pathParameters']['id']
 
-    # delete bill from the database
-    bill = collection.find_one({"_id": bill_id})
+    # delete user from the database
+    user = collection.find_one({"_id": user_id})
 
     # create a response
     response = {
         "statusCode": 200,
-        "body": json.dumps(bill)
+        "body": json.dumps(user)
     }
 
     # return response
