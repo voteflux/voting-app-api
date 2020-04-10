@@ -20,6 +20,14 @@ Start MongoDB
 sudo systemctl start mongod
 ```
 
+Populate the DB
+
+```
+python3 update_bills_db.py
+python3 update_issues_db.py
+```
+
+
 Install requirements
 
 ```
@@ -111,11 +119,11 @@ Substitute your endpoints into these curl commands to test the Create, Read, and
 
 ```
 curl --request POST \
-  --url http://localhost:3000/dev/bill \
+  --url http://localhost:3000/dev/user \
   --header 'content-type: application/json' \
   --data '{
-    "attribute_1": "Pet",
-    "attribute_2": "Rock"
+    "First": "Bob",
+    "Last": "Smith"
 }'
 ```
 
