@@ -8,28 +8,33 @@ This API uses MongoDB which is a NoSQL Database. In this section, we will discus
 - USERS - 'userscollection'
 - VOTES - 'votescollection'
 
-## Bills Collection
+## Bills Collection- alpha
 The document data for this collection shall include:
 - the output from the ausbills.Bill().data object  
 - the hash from the ballotspec
 - yes/no for the country
 - the ID of the results document in the results collection
 
-## Issues Collection
+## Issues Collection - alpha
 The document data for this collection shall include:
 - Issue details; Title, question, description, answers?
 - the hash from the ballotspec
 - yes/no for the country
 - the ID of the results document in the results collection
 
-## Results Collection
+## Results Collection - beta
 The document data for this collection shall include:
 - Bills/Issue ID
 - Constituent name
 - Yes count
 - No count
 
-## User Collection
+
+---
+
+# Not Required
+
+## User Collection - on client side
 The document data for this collection shall include:
 
 - Users password encrypted private key (For recovery)
@@ -37,7 +42,7 @@ The document data for this collection shall include:
 - AEC verification status
 - AEC data: constituent etc
 
-## Votes Collection
+## Votes Collection - on blockchain
 The document data for this collection shall include:
 - Bill/Issue ID
 - vote: yes/no

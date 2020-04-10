@@ -5,6 +5,7 @@
   "author": "",
   "license": "",
   "dependencies": {
+    "serverless": "^1.67.3",
     "serverless-python-requirements": "^5.1.0"
   },
   "devDependencies": {
