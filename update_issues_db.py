@@ -1,7 +1,12 @@
-from issue.create import create
-from issue.get import get
 import json
+import os
+import pymongo
+from mode import *
 
+# Connection String
+client = pymongo.MongoClient(mongosettings[URL])
+db = client[mongosettings[MONGODB]]
+collection = db[mongosettings[ISSUESCOLLECTION]]
 
 issues = [
     {
@@ -64,4 +69,5 @@ issues = [
 
 for issue in issues:
     print(issue)
-    create({"body": json.dumps(issue)}, None)
+    # create({"body": json.dumps(issue)}, None)
+    collection.replace_one({'_id': issue["id"]}, {'data': issue}, True)
