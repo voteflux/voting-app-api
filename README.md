@@ -19,7 +19,7 @@ sudo npm install -g serverless
 Install requirements
 
 ```
-pip3 install requirements.txt
+pip3 install -r requirements.txt
 npm i --save serverless-python-requirements
 npm install serverless-offline --save-dev
 ```
