@@ -19,6 +19,7 @@ sudo npm install -g serverless
 Install requirements
 
 ```
+pip3 install requirements.txt
 npm i --save serverless-python-requirements
 npm install serverless-offline --save-dev
 ```
@@ -38,7 +39,7 @@ python3 update_bills_db.py
 python3 update_issues_db.py
 ```
 
-'python3 update_bills_db.py' *may be run on loop every few hours to update DB*
+'python3 update_bills_db.py' _may be run on loop every few hours to update DB_
 
 we haven't got a good way to update the issues collection yet
 
@@ -49,7 +50,6 @@ serverless offline
 ```
 
 Ctrl+C to stop _serverless offline_
-
 
 ## Public Contracts
 
