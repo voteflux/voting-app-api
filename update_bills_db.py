@@ -18,15 +18,10 @@ def get_votes(id):
 
 # print(all_bills)
 for i in range(len(all_bills)):
-    url = all_bills[i]["URL"]
+    print(all_bills[i]["id"])
+    url = all_bills[i]["url"]
     bill = Bill(url)
-    # print(bill.data)
-    bill.data['Intro House'] = str(bill.data['Intro House'])
-    bill.data['Passed House'] = str(bill.data['Passed House'])
-    bill.data['Intro Senate'] = str(bill.data['Intro Senate'])
-    bill.data['Passed Senate'] = str(bill.data['Passed Senate'])
-    bill.data['Assent Date'] = str(bill.data['Assent Date'])
-    bill.data['Act No'] = bill.data.pop('Act No.')
-    (bill.data['Yes'], bill.data['No']) = get_votes(bill.data["id"])
+    (bill.data['yes'], bill.data['no']) = get_votes(bill.data["id"])
+    bill.data['ballotspec_hash'] = "COWIBY3978QCNYOXIURY3B8O7T5CNOQ8XW37C5N89347TY"
     # print(bill.data['Assent Date'])
     collection.replace_one({'_id': bill.data["id"]}, {'data': bill.data}, True)
