@@ -2,30 +2,40 @@
 
 This API uses MongoDB which is a NoSQL Database. In this section, we will discuss the collections in our votingdb and the document data within. The collections are:
 
-- BILLS - 'billscollection'
-- ISSUES - 'issuescollection'
-- RESULTS - 'resultscollection'
-- USERS - 'userscollection'
-- VOTES - 'votescollection'
-
 ## Bills Collection- alpha
 The document data for this collection shall include:
 - the output from the ausbills.Bill().data object  
-- the hash from the ballotspec
-- yes/no for the country
 - the ID of the results document in the results collection
 
 ## Issues Collection - alpha
 The document data for this collection shall include:
 - Issue details; Title, question, description, answers?
-- the hash from the ballotspec
-- yes/no for the country
 - the ID of the results document in the results collection
 
-## Results Collection - beta
+## Ballotspecs Collection - alpha
+This data is what same across both bills and issues and will form the basis for the ballotspec.
 The document data for this collection shall include:
-- Bills/Issue ID
-- Constituent name
+- id
+- short_title
+- question
+- description
+- start_date
+- chamber
+- Sponsor
+- ballotspec hash
+
+## Votes Collection - alpha
+The document data for this collection shall include:
+- id
+- vote: yes/no
+- Users public key
+- Time
+- Constituency
+
+## Results Collection
+The document data for this collection shall include:
+- id
+- Constituency
 - Yes count
 - No count
 
