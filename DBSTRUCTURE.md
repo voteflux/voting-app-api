@@ -30,6 +30,7 @@ The document data for this collection shall include:
 - vote: yes/no
 - Users public key
 - Constituency
+- vote hash
 
 ## Results Collection
 The document data for this collection shall include:
