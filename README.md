@@ -65,6 +65,8 @@ Local Dev:
    │   GET  | http://localhost:3000/dev/shitchain/{id}                            │
    │   GET  | http://localhost:3000/dev/shitchain                                 │
    │   POST | http://localhost:3000/dev/shitchain                                 │
+   │   GET  | http://localhost:3000/dev/result/{id}                               │
+   │   GET  | http://localhost:3000/dev/result                                    │
    │                                                                              │
    └──────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -87,4 +89,29 @@ with example body:
    "constituency": "Australia",
    "vote": "no"
  }
+```
+
+## Lambdas
+
+### Bills
+
+Update bills once a day around 5 am by running:
+
+```
+python3 update_bills_db.py
+```
+
+
+### Issues
+
+Can update issues collecting via api
+
+- To do
+
+### Results
+
+Count votes every 15 mins and update results collections
+
+```
+python3 update_results_db.py
 ```
