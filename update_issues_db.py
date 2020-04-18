@@ -10,59 +10,51 @@ collection = db[mongosettings[ISSUESCOLLECTION]]
 
 issues = [
     {
-        "Chamber": "Public",
-        "Short Title": "Closing of Travel from Coronavirus Countries",
-        "Start Date": "2019-07-22",
-        "End Date": "2020-04-30",
+        "chamber": "Public",
+        "short_title": "Closing of Travel from Coronavirus Countries",
+        "start_date": "2019-07-22",
+        "end_date": "2020-04-30",
         "id": "i0001",
-        "Summary":
+        "summary":
         "Should the Australian government look to limit travel from countries affected by Coronavirus?",
-        "Description":
+        "description":
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        "Sponsor": "Alexanda Great",
-        "Yes": 9004,
-        "No": 400,
+        "sponsor": "Alexanda Great",
     },
     {
-        "Chamber": "Public",
-        "Short Title": "GST on Sanitary Items",
-        "Start Date": "2019-09-24",
-        "End Date": "2020-07-30",
+        "chamber": "Public",
+        "short_title": "GST on Sanitary Items",
+        "start_date": "2019-09-24",
+        "end_date": "2020-07-30",
         "id": "i0002",
-        "Summary":
+        "summary":
         "Should the Australian government legislate to excluse Sanitary and Health items from the GST?",
-        "Description":
+        "description":
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        "Sponsor": "Health Lobby Group",
-        "Yes": 8004,
-        "No": 2070,
+        "sponsor": "Health Lobby Group",
     },
     {
-        "Chamber": "Public",
-        "Short Title": "Legalise Weed",
-        "Start Date": "2019-05-06",
-        "End Date": "2020-08-30",
+        "chamber": "Public",
+        "short_title": "Legalise Weed",
+        "start_date": "2019-05-06",
+        "end_date": "2020-08-30",
         "id": "i0003",
-        "Summary":
+        "summary":
         "Should the Australian government legalise recreational marijuana nationally?",
-        "Description":
+        "description":
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        "Sponsor": "Weed Lobby Group",
-        "Yes": 5888,
-        "No": 5123,
+        "sponsor": "Weed Lobby Group",
     },
     {
-        "Chamber": "Public",
-        "Short Title": "Independent Anti-corruption Commsion",
-        "Start Date": "2019-05-01",
-        "End Date": "2020-05-30",
+        "chamber": "Public",
+        "short_title": "Independent Anti-corruption Commsion",
+        "start_date": "2019-05-01",
+        "end_date": "2020-05-30",
         "id": "i0004",
-        "Summary": "Should an independent Federal ICAC be created?",
-        "Description":
+        "summary": "Should an independent Federal ICAC be created?",
+        "description":
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        "Sponsor": "Freedom Lobby Group",
-        "Yes": 9900,
-        "No": 100,
+        "sponsor": "Freedom Lobby Group",
     },
 ]
 
