@@ -1,4 +1,3 @@
-org: kiplingcrossing
 app: voting-app-api
 service: voting-app-api
 
