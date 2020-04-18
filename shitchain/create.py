@@ -23,7 +23,7 @@ def create(event, context):
         assert data["vote"] == "yes" or data["vote"] == "no"
         vote = {
             "_id": vote_id,
-            "data": data
+            "data": data,
         }
 
         # write bill to database
