@@ -1,14 +1,17 @@
-import json
-from ausbills.federal_parliment import all_bills, Bill
-import os
-import pymongo
-from mode import *
+
 import random
+from mode import *
+import pymongo
+import os
+from ausbills.federal_parliment import all_bills, Bill
+import json
+from update_ballotspecs_db import update_ballotspecs
+
 
 # Connection String
 client = pymongo.MongoClient(mongosettings[URL])
 db = client[mongosettings[MONGODB]]
-collection = db[mongosettings[BILLSCOLLECTION]]
+bills_collection = db[mongosettings[BILLSCOLLECTION]]
 
 
 # dummy function, waiting for votes to be counted on the blockchain.
@@ -21,7 +24,32 @@ for i in range(len(all_bills)):
     print(all_bills[i]["id"])
     url = all_bills[i]["url"]
     bill = Bill(url)
-    (bill.data['yes'], bill.data['no']) = get_votes(bill.data["id"])
-    bill.data['ballotspec_hash'] = "COWIBY3978QCNYOXIURY3B8O7T5CNOQ8XW37C5N89347TY"
-    # print(bill.data['Assent Date'])
-    collection.replace_one({'_id': bill.data["id"]}, {'data': bill.data}, True)
+    #  Standed keys
+    bill.data["question"] = "Should this bill be passed into law?"
+    bill.data["description"] = bill.data.pop("summary")
+    if bill.data["chamber"] == "House":
+        start_date = bill.data["intro_house"]
+    else:
+        start_date = bill.data["intro_senate"]
+
+    update_ballotspecs(bill.data["id"], bill.data["short_title"], bill.data["question"],
+                       bill.data["description"], start_date, bill.data["chamber"], bill.data["sponsor"])
+
+    bills_collection.replace_one({'_id': bill.data["id"]}, {'data': bill.data}, True)
+
+
+bills_example = {"_id": "r6409", "data": {"chamber": "House",
+                                          "short_title": "Australian Citizenship Amendment (Citizenship Cessation) 2019",
+                                          "intro_house": "2019-09-19",
+                                          "passed_house": "",
+                                          "intro_senate": "",
+                                          "passed_senate": "",
+                                          "assent_date": "",
+                                          "act_no": "",
+                                          "url": "https://www.aph.gov.au/Parliamentary_Business/Bills_Legislation/Bills_Search_Results/Result?bId=r6409",
+                                          "id": "r6409",
+                                          "current_reading": "first",
+                                          "summary": "Independent National Security Legislation Monitor Act 2010",
+                                          "sponsor": "",
+                                          "readings": {}
+                                          }}
