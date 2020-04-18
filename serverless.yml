@@ -75,3 +75,19 @@ functions:
           path: shitchain
           method: post
           cors: true
+          
+  getresult:
+    handler: result/get.get
+    events:
+      - http:
+          path: result/{id}
+          method: get
+          cors: true
+
+  listresult:
+    handler: result/list.list
+    events:
+      - http:
+          path: result
+          method: get
+          cors: true
