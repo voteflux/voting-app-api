@@ -55,12 +55,36 @@ Ctrl+C to stop _serverless offline_
 Local Dev:
 
 ```
-┌────────────────────────────────────────────────────────────────────────────────┐
-│   GET    | http://localhost:3000/dev/bill/{id}                                 │
-│   GET    | http://localhost:3000/dev/bill                                      │
-│   GET    | http://localhost:3000/dev/issue/{id}                                │
-│   GET    | http://localhost:3000/dev/issue                                     │
-└────────────────────────────────────────────────────────────────────────────────┘
+
+   ┌──────────────────────────────────────────────────────────────────────────────┐
+   │                                                                              │
+   │   GET  | http://localhost:3000/dev/bill/{id}                                 │
+   │   GET  | http://localhost:3000/dev/bill                                      │
+   │   GET  | http://localhost:3000/dev/issue/{id}                                │
+   │   GET  | http://localhost:3000/dev/issue                                     │
+   │   GET  | http://localhost:3000/dev/shitchain/{id}                            │
+   │   GET  | http://localhost:3000/dev/shitchain                                 │
+   │   POST | http://localhost:3000/dev/shitchain                                 │
+   │                                                                              │
+   └──────────────────────────────────────────────────────────────────────────────┘
 ```
 
 Where `{id}` is the bill/issue id
+
+To make a vote, `POST` to:
+
+```
+http://localhost:3000/dev/shitchain/
+```
+
+with example body:
+
+```json
+{
+   "pub_key":"lafksdjfnhc934y8q5pcn98xpc5ny85y410c5mp9xnyv",
+   "ballot_id": "r6434",
+   "ballotspec_hash": "86d9935a4fcdd7d517293229527ace224287cb6ba2d07115f4784db16fece5af",
+   "constituency": "Australia",
+   "vote": "no"
+ }
+```

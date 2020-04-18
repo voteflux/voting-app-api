@@ -75,35 +75,3 @@ functions:
           path: shitchain
           method: post
           cors: true
-
-  createuser:
-    handler: user/create.create
-    events:
-      - http:
-          path: user
-          method: post
-          cors: true
-
-  listuser:
-    handler: user/list.list
-    events:
-      - http:
-          path: user
-          method: get
-          cors: true
-
-  getuser:
-    handler: user/get.get
-    events:
-      - http:
-          path: user/{id}
-          method: get
-          cors: true
-
-  deleteuser:
-    handler: user/delete.delete
-    events:
-      - http:
-          path: user/{id}
-          method: delete
-          cors: true
