@@ -8,6 +8,7 @@ ISSUESCOLLECTION = 'issuescollection'
 RESULTSCOLLECTION = 'resultscollection'
 USERSCOLLECTION = 'userscollection'
 VOTESCOLLECTION = 'votescollection'
+BALLOTSPECSCOLLECTION = "ballotspecscollection"
 URL = 'url'
 
 prod = False
@@ -24,6 +25,7 @@ ms = {
     RESULTSCOLLECTION: "results",
     USERSCOLLECTION: "users",
     VOTESCOLLECTION: "votes",
+    BALLOTSPECSCOLLECTION: "ballotspecs",
     URL: "localhost:27017",
 }
 
@@ -37,6 +39,7 @@ if prod:
         RESULTSCOLLECTION: "results",
         USERSCOLLECTION: "users",
         VOTESCOLLECTION: "votes",
+        BALLOTSPECSCOLLECTION: "ballotspecs",
         URL: "mongodb+srv://" + usr + ":" + pwd + "@" +
         os.environ['MONGO_DB_URL'] + "/test?retryWrites=true&w=majority"
     }
