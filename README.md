@@ -20,8 +20,7 @@ Install requirements
 
 ```
 pip3 install -r requirements.txt
-npm i --save serverless-python-requirements
-npm install serverless-offline --save-dev
+npm install
 ```
 
 ### On every startup
