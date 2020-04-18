@@ -29,7 +29,6 @@ The document data for this collection shall include:
 - id
 - vote: yes/no
 - Users public key
-- Time
 - Constituency
 
 ## Results Collection

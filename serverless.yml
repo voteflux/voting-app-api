@@ -52,6 +52,30 @@ functions:
           method: get
           cors: true
 
+  getballot:
+    handler: shitchain/get.get
+    events:
+      - http:
+          path: shitchain/{id}
+          method: get
+          cors: true
+
+  listballot:
+    handler: shitchain/list.list
+    events:
+      - http:
+          path: shitchain
+          method: get
+          cors: true
+
+  makevote:
+    handler: shitchain/create.create
+    events:
+      - http:
+          path: shitchain
+          method: post
+          cors: true
+
   createuser:
     handler: user/create.create
     events:
