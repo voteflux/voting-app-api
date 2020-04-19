@@ -11,7 +11,16 @@ VOTESCOLLECTION = 'votescollection'
 BALLOTSPECSCOLLECTION = "ballotspecscollection"
 URL = 'url'
 
-prod = False
+user = os.environ['MONGO_DB_USER']
+pwd = os.environ['MONGO_DB_PASS'],
+
+
+print(user, pwd)
+if user is not None and pwd is not None:
+    cluster = True
+else:
+    cluster = False
+
 
 ms = {
     # MONGODB: os.environ['MONGO_DB_NAME'],
@@ -29,19 +38,19 @@ ms = {
     URL: "localhost:27017",
 }
 
-if prod:
+if cluster:
     ms = {
-        USER: os.environ['MONGO_DB_USER'],
-        PWD: os.environ['MONGO_DB_PASS'],
-        MONGODB: os.environ['MONGO_DB_NAME'],
+        USER: user,
+        PWD: pwd,
+        MONGODB: "votingdb",
         BILLSCOLLECTION: "bills",
         ISSUESCOLLECTION: "issues",
         RESULTSCOLLECTION: "results",
         USERSCOLLECTION: "users",
         VOTESCOLLECTION: "votes",
         BALLOTSPECSCOLLECTION: "ballotspecs",
-        URL: "mongodb+srv://" + usr + ":" + pwd + "@" +
-        os.environ['MONGO_DB_URL'] + "/test?retryWrites=true&w=majority"
+        URL: "mongodb+srv://" + user + ":" + pwd[0] + "@" +
+        "cluster0-ctiil.mongodb.net" + "/test?retryWrites=true&w=majority"
     }
 
 
