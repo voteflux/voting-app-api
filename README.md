@@ -4,14 +4,23 @@
 
 ### On first time
 
+* install NVM
+* install pyenv
+
 ```
-sudo apt-get install nodejs
+git clone https://github.com/KipCrossing/voting-app-api
+cd voting-app-api
 
+# if ubuntu
 sudo apt-get install curl software-properties-common
+# use NVM instead; curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
+nvm use 12
+# npm install serverless
+npm i
 
-curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
-
-sudo npm install -g serverless
+# ensure python 3.7.6 installed in pyenv
+pyenv install
+python3 -m pip install -r requirements.txt
 ```
 
 [Install MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-debian/#install-mongodb-community-edition)
@@ -49,7 +58,7 @@ we haven't got a good way to update the issues collection yet
 Run serverless offline
 
 ```
-serverless offline
+npx sls offline
 ```
 
 Ctrl+C to stop _serverless offline_
