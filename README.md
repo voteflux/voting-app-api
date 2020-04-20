@@ -25,6 +25,8 @@ npm install
 
 ### On every startup
 
+### Dev (offlline)
+
 Start MongoDB
 
 ```
@@ -36,6 +38,8 @@ Populate/update the DB
 ```
 python3 update_bills_db.py
 python3 update_issues_db.py
+python3 update_ballotspecs_db.py
+python3 update_results_db.py
 ```
 
 'python3 update_bills_db.py' _may be run on loop every few hours to update DB_
@@ -49,6 +53,40 @@ serverless offline
 ```
 
 Ctrl+C to stop _serverless offline_
+
+### Deploy 
+
+Add mongoDB creds to env vars:
+
+```
+MONGO_DB_USER=
+MONGO_DB_PASS=
+```
+
+Populate DB
+
+```
+python3 update_bills_db.py
+python3 update_issues_db.py
+python3 update_ballotspecs_db.py
+python3 update_results_db.py
+```
+
+May also need to check the url in `mode.py`.
+
+Add aws creds:
+
+```
+aws configure
+```
+
+Link MongoDB cluster to aws - todo
+
+Deploy to aws:
+
+```
+serverless deploy
+```
 
 ## Public Contracts
 
