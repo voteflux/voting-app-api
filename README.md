@@ -71,6 +71,21 @@ Local Dev:
    └──────────────────────────────────────────────────────────────────────────────┘
 ```
 
+AWS Dev:
+
+```
+endpoints:
+  GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/bill/{id}
+  GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/bill
+  GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/issue/{id}
+  GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/issue
+  GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/shitchain/{id}
+  GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/shitchain
+  POST - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/shitchain
+  GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/result/{id}
+  GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/result
+```
+
 Where `{id}` is the bill/issue id
 
 To make a vote, `POST` to:
