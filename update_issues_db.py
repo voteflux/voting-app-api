@@ -60,13 +60,13 @@ issues = [
 for issue in issues:
     print("-------------------")
     total_issues = len(list(collection.find()))
-    # print([items for items in list(collection.find())])
+    print([items for items in list(collection.find())])
 
-    titles = [items["short_title"] for items in list(collection.find())]
+    titles = [items["data"]["short_title"] for items in list(collection.find())]
     print(list(titles))
     if issue["short_title"] not in titles:
         if total_issues:
-            print([num["num"] for num in list(collection.find())])
+            print([items["num"] for items in list(collection.find())])
             issue_number = collection.find().sort("num", -1)[0]["num"] + 1
             print(issue_number)
         else:
@@ -75,12 +75,10 @@ for issue in issues:
         issue["id"] = issue_id
         collection.insert_one({'_id': issue["id"],
                                "num": issue_number,
-                               "short_title": issue["short_title"],
                                'data': issue})
 
         update_ballotspecs(issue["id"], issue["short_title"], issue["question"],
                            issue["description"], issue["start_date"], issue["chamber"], issue["sponsor"])
     else:
-        collection.update_one({'short_title': issue["short_title"]},
+        collection.update_one({'data.short_title': issue["short_title"]},
                               {"$set": {'data': issue}}, True)
-        # pass

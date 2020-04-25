@@ -18,6 +18,7 @@ provider:
     MONGO_DB_PASS: ${env:MONGO_DB_PASS}
     MONGO_DB_NAME: votingdb
     MONGO_DB_URL: ${env:MONGO_DB_URL}
+    ISSUE_CREATE_TOKEN: ${env:ISSUE_CREATE_TOKEN}
   iamManagedPolicies:
     - "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 
@@ -52,6 +53,14 @@ functions:
       - http:
           path: issue
           method: get
+          cors: true
+
+  makeissue:
+    handler: issue/create.create
+    events:
+      - http:
+          path: issue
+          method: post
           cors: true
 
   getballot:
