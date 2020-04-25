@@ -12,10 +12,10 @@ BALLOTSPECSCOLLECTION = "ballotspecscollection"
 URL = 'url'
 
 user = os.environ['MONGO_DB_USER']
-pwd = os.environ['MONGO_DB_PASS'],
+pwd = os.environ['MONGO_DB_PASS']
+url = os.environ['MONGO_DB_URL']
 
-
-print(user, pwd)
+print(user, url)
 if user is not None and pwd is not None:
     cluster = True
 else:
@@ -50,7 +50,7 @@ if cluster:
         VOTESCOLLECTION: "votes",
         BALLOTSPECSCOLLECTION: "ballotspecs",
         URL: "mongodb+srv://" + user + ":" + pwd[0] + "@" +
-        "cluster0-ctiil.mongodb.net" + "/test?retryWrites=true&w=majority"
+        url + "/test?retryWrites=true&w=majority"
     }
 
 
