@@ -54,7 +54,7 @@ serverless offline
 
 Ctrl+C to stop _serverless offline_
 
-### Deploy 
+### Deploy
 
 Add mongoDB creds to env vars:
 
@@ -143,6 +143,27 @@ with example body:
    "vote": "no"
  }
 ```
+
+
+To Create a new Issue, `POST` to:
+
+```
+http://localhost:3000/dev/issue
+```
+
+with example body:
+
+```json
+{"token":"YOURTOKENHERE",
+   "data": {"chamber": "Public",
+            "short_title": "Independent Anti-corruption Commsion",
+            "start_date": "2019-05-01",
+            "end_date": "2020-05-30",
+            "question": "Should an independent Federal ICAC be created?",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+            "sponsor": "Freedom Lobby Group"}}
+```
+
 
 ## Lambdas
 
