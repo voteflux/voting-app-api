@@ -20,7 +20,7 @@ issues = [
         "Should the Australian government look to limit travel from countries affected by Coronavirus?",
         "description":
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        "sponsor": "Alexanda the Great",
+        "sponsor": "Alexanda the Great"
     },
     {
         "chamber": "Public",
@@ -31,7 +31,7 @@ issues = [
         "Should the Australian government legislate to excluse Sanitary and Health items from the GST?",
         "description":
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        "sponsor": "Health Lobby Group",
+        "sponsor": "Health Lobby Group"
     },
     {
         "chamber": "Public",
@@ -42,7 +42,7 @@ issues = [
         "Should the Australian government legalise recreational marijuana nationally?",
         "description":
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        "sponsor": "Weed Lobby Group",
+        "sponsor": "Weed Lobby Group"
     },
     {
         "chamber": "Public",
@@ -52,7 +52,7 @@ issues = [
         "question": "Should an independent Federal ICAC be created?",
         "description":
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        "sponsor": "Freedom Lobby Group",
+        "sponsor": "Freedom Lobby Group"
     },
 ]
 
@@ -80,5 +80,6 @@ for issue in issues:
         update_ballotspecs(issue["id"], issue["short_title"], issue["question"],
                            issue["description"], issue["start_date"], issue["chamber"], issue["sponsor"])
     else:
-        collection.update_one({'data.short_title': issue["short_title"]},
-                              {"$set": {'data': issue}}, True)
+        # collection.update_one({'data.short_title': issue["short_title"]},
+        #                       {"$set": {'data': issue}}, True)
+        print("Title already exists")

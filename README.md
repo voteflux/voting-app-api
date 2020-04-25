@@ -117,6 +117,7 @@ endpoints:
   GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/bill
   GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/issue/{id}
   GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/issue
+  POST - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/issue
   GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/shitchain/{id}
   GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/shitchain
   POST - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/shitchain
