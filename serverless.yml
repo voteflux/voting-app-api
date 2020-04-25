@@ -10,6 +10,8 @@ plugins:
 
 provider:
   name: aws
+  stage: alpha
+  region: ap-southeast-2
   runtime: python3.7
   environment:
     MONGO_DB_USER: None
@@ -75,7 +77,7 @@ functions:
           path: shitchain
           method: post
           cors: true
-          
+
   getresult:
     handler: result/get.get
     events:
