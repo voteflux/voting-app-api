@@ -15,7 +15,7 @@ user = os.environ['MONGO_DB_USER']
 pwd = os.environ['MONGO_DB_PASS']
 url = os.environ['MONGO_DB_URL']
 
-print(user, url)
+print(user, url, pwd)
 if user is not None and pwd is not None:
     cluster = True
 else:
@@ -49,7 +49,7 @@ if cluster:
         USERSCOLLECTION: "users",
         VOTESCOLLECTION: "votes",
         BALLOTSPECSCOLLECTION: "ballotspecs",
-        URL: "mongodb+srv://" + user + ":" + pwd[0] + "@" +
+        URL: "mongodb+srv://" + user + ":" + pwd + "@" +
         url + "/test?retryWrites=true&w=majority"
     }
 
