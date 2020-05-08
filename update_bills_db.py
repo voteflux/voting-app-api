@@ -50,12 +50,3 @@ def run(event, context):
             bills_collection.replace_one({'_id': bill.data["id"]}, {'data': bill.data}, True)
         else:
             bad_bills.append((bill.data["id"],  bill.data["short_title"]))
-    for bill in bad_bills:
-        print(bad_bills)
-
-
-badbills = [('r6524', 'Appropriation (Coronavirus Economic Response Package) (No. 1) 2019-2020'), ('r6530', 'Appropriation (Coronavirus Economic Response Package) (No. 2) 2019-2020'), ('r6532', 'Appropriation (No. 5) 2019-2020'), ('r6534', 'Appropriation (No. 6) 2019-2020'), ('r6523', 'Assistance for Severely Affected Regions (Special Appropriation) (Coronavirus Economic Response Package) 2020'), ('r6519', 'Australian Business Growth Fund (Coronavirus Economic Response Package) 2020'), ('r6522',
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            'Boosting Cash Flow for Employers (Coronavirus Economic Response Package) 2020'), ('r6521', 'Coronavirus Economic Response Package Omnibus 2020'), ('r6535', 'Coronavirus Economic Response Package Omnibus (Measures No. 2) 2020'), ('r6533', 'Coronavirus Economic Response Package (Payments and Benefits) 2020'), ('r6529', 'Guarantee of Lending to Small and Medium Enterprises (Coronavirus Economic Response Package) 2020'), ('r6528', 'Structured Finance Support (Coronavirus Economic Response Package) 2020')]
-
-for bill in badbills:
-    print(bill)
