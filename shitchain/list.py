@@ -11,24 +11,12 @@ collection = db[mongosettings[BALLOTSPECSCOLLECTION]]
 
 def list(event, context):
     # create response body object
-    response_body = {}
-
-    # create array for reponse ballots
-    response_body['response_ballots'] = []
-
-    # return path parameters with filter key
-    response_body['filter'] = event['multiValueQueryStringParameters']
-
-    # build query with any path parameters
-    query = {}
-    if event['multiValueQueryStringParameters'] is not None:
-        for parameter in event['multiValueQueryStringParameters']:
-            query[parameter] = event['multiValueQueryStringParameters'][parameter][0]
+    response_body = []
 
     # create list of ballots
-    cursor = collection.find(query)
+    cursor = collection.find()
     for document in cursor:
-        response_body['response_ballots'].append(document)
+        response_body.append(document)
 
     # create response
     response = {
