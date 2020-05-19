@@ -103,11 +103,11 @@ functions:
           method: get
           cors: true
 
-  updatebills:
-    handler: update_bills_db.run
-    events:
-      - schedule: rate(24 hours)
-      - schedule: cron(0 5 * * ? *)
+  # updatebills:
+  #   handler: update_bills_db.run
+  #   events:
+  #     - schedule: rate(24 hours)
+  #     - schedule: cron(0 5 * * ? *)
 
   updateresults:
     handler: update_results_db.run
