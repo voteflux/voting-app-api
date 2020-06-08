@@ -6,14 +6,14 @@ from mode import *
 # Connection String
 client = pymongo.MongoClient(mongosettings[URL])
 db = client[mongosettings[MONGODB]]
-collection = db[mongosettings[BILLSCOLLECTION]]
+collection = db[mongosettings[BALLOTSPECSCOLLECTION]]
 
 
 def list(event, context):
     # create response body object
     response_body = []
 
-    # create list of bills
+    # create list of ballots
     cursor = collection.find()
     for document in cursor:
         response_body.append(document)

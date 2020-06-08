@@ -19,20 +19,36 @@ def get_votes(id):
     return(500 + int(random.random()*1000), 500 + int(random.random()*1000))
 
 
+naughty_words = ['corona', 'covid']
 # print(all_bills)
-for i in range(len(all_bills)):
-    print(all_bills[i]["id"])
-    url = all_bills[i]["url"]
-    bill = Bill(url)
-    #  Standed keys
-    bill.data["question"] = "Should this bill be passed into law?"
-    bill.data["description"] = bill.data.pop("summary")
-    if bill.data["chamber"] == "House":
-        bill.data["start_date"] = bill.data["intro_house"]
-    else:
-        bill.data["start_date"] = bill.data["intro_senate"]
 
-    update_ballotspecs(bill.data["id"], bill.data["short_title"], bill.data["question"],
-                       bill.data["description"], bill.data["start_date"], bill.data["chamber"], bill.data["sponsor"])
+bad_bills = []
 
-    bills_collection.replace_one({'_id': bill.data["id"]}, {'data': bill.data}, True)
+
+def run(event, context):
+    for i in range(len(all_bills)):
+        post = True
+        print(all_bills[i]["id"])
+        url = all_bills[i]["url"]
+        bill = Bill(url)
+        # Standed keys
+        bill.data["question"] = "Should this bill be passed into law?"
+        bill.data["description"] = bill.data.pop("summary")
+        if bill.data["chamber"] == "House":
+            bill.data["start_date"] = bill.data["intro_house"]
+        else:
+            bill.data["start_date"] = bill.data["intro_senate"]
+
+        for word in naughty_words:
+            if word in bill.data["description"].lower() or word in bill.data["short_title"].lower():
+                post = False
+                print(bill.data["id"],  bill.data["short_title"])
+
+        if post:
+            update_ballotspecs(bill.data["id"], bill.data["short_title"], bill.data["question"],
+                               bill.data["description"], bill.data["start_date"], bill.data["chamber"], bill.data["sponsor"])
+
+            bills_collection.replace_one({'_id': bill.data["id"]}, {'data': bill.data}, True)
+        else:
+            bad_bills.append((bill.data["id"],  bill.data["short_title"]))
+

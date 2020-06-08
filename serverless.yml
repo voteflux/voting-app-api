@@ -10,12 +10,15 @@ plugins:
 
 provider:
   name: aws
+  stage: dev
+  region: ap-southeast-2
   runtime: python3.7
   environment:
-    MONGO_DB_USER: None
-    MONGO_DB_PASS: None
+    MONGO_DB_USER: ${env:MONGO_DB_USER}
+    MONGO_DB_PASS: ${env:MONGO_DB_PASS}
     MONGO_DB_NAME: votingdb
-    MONGO_DB_URL: localhost:27017
+    MONGO_DB_URL: ${env:MONGO_DB_URL}
+    ISSUE_CREATE_TOKEN: ${env:ISSUE_CREATE_TOKEN}
   iamManagedPolicies:
     - "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 
@@ -52,34 +55,61 @@ functions:
           method: get
           cors: true
 
-  createuser:
-    handler: user/create.create
+  makeissue:
+    handler: issue/create.create
     events:
       - http:
-          path: user
+          path: issue
           method: post
           cors: true
 
-  listuser:
-    handler: user/list.list
+  getballot:
+    handler: shitchain/get.get
     events:
       - http:
-          path: user
+          path: shitchain/{id}
           method: get
           cors: true
 
-  getuser:
-    handler: user/get.get
+  listballot:
+    handler: shitchain/list.list
     events:
       - http:
-          path: user/{id}
+          path: shitchain
           method: get
           cors: true
 
-  deleteuser:
-    handler: user/delete.delete
+  makevote:
+    handler: shitchain/create.create
     events:
       - http:
-          path: user/{id}
-          method: delete
+          path: shitchain
+          method: post
           cors: true
+
+  getresult:
+    handler: result/get.get
+    events:
+      - http:
+          path: result/{id}
+          method: get
+          cors: true
+
+  listresult:
+    handler: result/list.list
+    events:
+      - http:
+          path: result
+          method: get
+          cors: true
+
+  # updatebills:
+  #   handler: update_bills_db.run
+  #   events:
+  #     - schedule: rate(24 hours)
+  #     - schedule: cron(0 5 * * ? *)
+
+  updateresults:
+    handler: update_results_db.run
+    events:
+      - schedule: rate(10 minutes)
