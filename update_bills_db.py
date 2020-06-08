@@ -21,6 +21,7 @@ def get_votes(id):
 
 naughty_words = ['corona', 'covid']
 # print(all_bills)
+
 bad_bills = []
 
 
@@ -50,3 +51,4 @@ def run(event, context):
             bills_collection.replace_one({'_id': bill.data["id"]}, {'data': bill.data}, True)
         else:
             bad_bills.append((bill.data["id"],  bill.data["short_title"]))
+

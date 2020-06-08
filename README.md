@@ -1,5 +1,7 @@
 # voting-app-api
 
+**We are currently running the shitchain, so please check out that branch**
+
 ## Getting started
 
 ### On first time
