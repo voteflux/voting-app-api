@@ -62,6 +62,14 @@ def create(event, context):
                 "statusCode": 409,
                 "body": json.dumps("short_title already exists")
             }
+    elif TOKEN == 'TEST':
+        
+        issue = payload["data"]
+
+        response = {
+            "statusCode": 200,
+            "body": json.dumps(issue)
+        }
 
     else:
         response = {
