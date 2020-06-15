@@ -3,6 +3,7 @@ import os
 import pymongo
 from mode import *
 import hashlib
+import requests
 
 
 # Data for each document
@@ -39,12 +40,36 @@ def update_ballotspecs(id, short_title, question, description, start_date, chamb
         SPONSOR: sponsor,
     }
     # create ballotspec_hash
-    bs_h = hash_ballotspec(json.dumps(input_dict))
+
+    issue_string = json.dumps(input_dict)
+
+    ballotspec_dict = {
+        "ballotTitle": id,
+        "longDesc": issue_string,
+        "shortDesc": short_title,
+        "ballotVersion" : 2,
+        "optionsVersion" : 1,
+    }
+    bs_h = hash_ballotspec(json.dumps(ballotspec_dict))
+    ## Post to the blochain
+
+    to_api = {
+        "method" : "ballot_publish",
+        "params": {
+            "specHash": bs_h
+        }
+    }
+
+    print(to_api)
+    r = requests.post("https://api.blockchain.suzuka.flux.party/api", data=to_api)
+    print(r.text)
+
 
     try:
         ballotspecs_collection.insert_one(
             {'_id': input_dict["id"],
              'data': input_dict,
              BALLOTSPEC_HASH: bs_h})
+
     except Exception as e:
         print(e)
