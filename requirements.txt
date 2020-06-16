@@ -1,3 +1,4 @@
 pymongo
 dnspython
 ausbills
+python-dotenv==0.13.0

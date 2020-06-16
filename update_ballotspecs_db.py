@@ -50,13 +50,16 @@ def update_ballotspecs(id, short_title, question, description, start_date, chamb
         "ballotVersion" : 2,
         "optionsVersion" : 1,
     }
-    bs_h = hash_ballotspec(json.dumps(ballotspec_dict))
+    ballot_spec_sz = json.dumps(ballotspec_dict)
+    bs_h = hash_ballotspec(ballot_spec_sz)
     ## Post to the blochain
 
     to_api = {
-        "method" : "ballot_publish",
+        "method": "ballot_publish",
         "params": {
-            "specHash": bs_h
+            "specHash": id,
+            "ballotSpec": ballot_spec_sz,
+            "realSpecHash": bs_h
         }
     }
 
