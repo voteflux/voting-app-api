@@ -2,3 +2,4 @@ node_modules
 *.pyc
 bill/__pycache__/
 .serverless
+.idea/*
