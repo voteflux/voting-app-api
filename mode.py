@@ -38,7 +38,7 @@ ms = {
     USERSCOLLECTION: "users",
     VOTESCOLLECTION: "votes",
     BALLOTSPECSCOLLECTION: "ballotspecs",
-    URL: "localhost:27017",
+    URL: "mongodb+srv://localhost:27017/test",
 }
 
 if cluster:
