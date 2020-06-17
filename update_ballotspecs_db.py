@@ -5,7 +5,6 @@ from mode import *
 import hashlib
 import requests
 
-
 # Data for each document
 ID = "id"
 SHORT_TITLE = "short_title"
@@ -26,7 +25,7 @@ ballotspecs_collection = db[mongosettings[BALLOTSPECSCOLLECTION]]
 def hash_ballotspec(ballotspec_string):
     h = hashlib.sha256()
     h.update(str(ballotspec_string).encode('utf-8'))
-    return(h.hexdigest())
+    return (h.hexdigest())
 
 
 def update_ballotspecs(id, short_title, question, description, start_date, chamber, sponsor):
@@ -47,8 +46,8 @@ def update_ballotspecs(id, short_title, question, description, start_date, chamb
         "ballotTitle": id,
         "longDesc": issue_string,
         "shortDesc": short_title,
-        "ballotVersion" : 2,
-        "optionsVersion" : 1,
+        "ballotVersion": 2,
+        "optionsVersion": 1,
     }
     ballot_spec_sz = json.dumps(ballotspec_dict)
     bs_h = hash_ballotspec(ballot_spec_sz)
@@ -66,7 +65,6 @@ def update_ballotspecs(id, short_title, question, description, start_date, chamb
     print(to_api)
     r = requests.post("https://api.blockchain.suzuka.flux.party/api", data=to_api)
     print(r.text)
-
 
     try:
         ballotspecs_collection.insert_one(
