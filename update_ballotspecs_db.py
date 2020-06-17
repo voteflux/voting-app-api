@@ -41,7 +41,10 @@ def hash_ballotspec(ballotspec_string):
 
 def push_to_chain(method, params):
     log.info(f"Pushing to BC API: {json.dumps(params)}")
-    r = requests.post("https://api.blockchain.suzuka.flux.party/members/api", data={"method": method, "params": params})
+    print(method)
+    print(params)
+    r = requests.post("https://api.blockchain.suzuka.flux.party/members/api", data=json.dumps({"method": method, "params": params}))
+    print(r.text)
     log.info(f"push_to_chain Response: {r}\n\n-- Response content {r.content}\n\n-- As text: {r.text}")
     return r
 
