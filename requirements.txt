@@ -3,3 +3,6 @@ dnspython
 ausbills
 requests==2.23.0
 python-dotenv==0.13.0
+pytest==5.4.3
+web3==5.11.0
+attrdict==2.0.1
