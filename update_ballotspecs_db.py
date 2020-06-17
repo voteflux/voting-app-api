@@ -20,11 +20,18 @@ SPONSOR = "sponsor"
 BALLOTSPEC_HASH = "ballotspec_hash"
 
 # Connection String
-client = pymongo.MongoClient(mongosettings[URL])
-db = client[mongosettings[MONGODB]]
-ballotspecs_collection = db[mongosettings[BALLOTSPECSCOLLECTION]]
+_client = None
+
+
+def _get_client():
+    global _client
+    if _client is None:
+        _client = pymongo.MongoClient(mongosettings[URL])
+    return _client
+
 
 log = logging.getLogger(__name__)
+
 
 def hash_ballotspec(ballotspec_string):
     h = hashlib.sha256()
@@ -39,7 +46,16 @@ def push_to_chain(method, params):
     return r
 
 
+def render_spec_hash(_s):
+    if isinstance(_s, str) or type(_s) is str:
+        if _s[:2] != "0x" or len(_s) != 66:
+            return "0x" + ("00" * (32 - len(_s)) + hexlify(_s.encode()).decode())
+    return _s
+
 def update_ballotspecs(id, short_title, question, description, start_date, chamber, sponsor):
+    db = _get_client()[mongosettings[MONGODB]]
+    ballotspecs_collection = db[mongosettings[BALLOTSPECSCOLLECTION]]
+
     input_dict = {
         ID: id,
         SHORT_TITLE: short_title,
@@ -62,12 +78,6 @@ def update_ballotspecs(id, short_title, question, description, start_date, chamb
     }
     ballot_spec_sz = json.dumps(ballotspec_dict)
     bs_h = hash_ballotspec(ballot_spec_sz)
-
-    def render_spec_hash(_s):
-        if isinstance(_s, str) or type(_s) is str:
-            if _s[:2] != "0x" or len(_s) != 66:
-                return "0x" + ("00" * (32 - len(_s)) + hexlify(_s).decode('ascii'))
-        return _s
 
     try:
         # Post to API => posts the blockchain
