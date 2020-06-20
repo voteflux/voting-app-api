@@ -83,9 +83,6 @@ def update_ballotspecs(id, short_title, question, description, start_date, chamb
     ballot_spec_sz = json.dumps(ballotspec_dict)
     bs_h = hash_ballotspec(ballot_spec_sz)
 
-    bills_collection.update_one({'_id': id},
-                                {"$set": {"data.yes": result_doc["yes"]}})
-
     try:
         # Post to API => posts the blockchain
         TxID = push_to_chain("ballot_publish", {
@@ -108,5 +105,3 @@ def update_ballotspecs(id, short_title, question, description, start_date, chamb
              "realSpecHash": bs_h})
     except Exception as e:
         print(e)
-
-
