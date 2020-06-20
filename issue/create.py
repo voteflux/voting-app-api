@@ -11,16 +11,6 @@ db = client[mongosettings[MONGODB]]
 collection = db[mongosettings[ISSUESCOLLECTION]]
 
 
-issues_document = {"_id": "i4",
-                   "num": 4,
-                   "data": {"chamber": "Public",
-                            "short_title": "Independent Anti-corruption Commsion",
-                            "start_date": "2019-05-01",
-                            "end_date": "2020-05-30",
-                            "question": "Should an independent Federal ICAC be created?",
-                            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "sponsor": "Freedom Lobby Group"}}
-
-
 def create(event, context):
     # get request body
     try:
