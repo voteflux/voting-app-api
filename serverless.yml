@@ -63,6 +63,22 @@ functions:
           method: post
           cors: true
 
+  getspec:
+    handler: spec/get.get
+    events:
+      - http:
+          path: spec/{id}
+          method: get
+          cors: true
+
+  listspec:
+    handler: spec/list.list
+    events:
+      - http:
+          path: spec
+          method: get
+          cors: true
+
   getballot:
     handler: shitchain/get.get
     events:
