@@ -46,7 +46,7 @@ def push_to_chain(method, params):
     r = requests.post("https://api.blockchain.suzuka.flux.party/members/api", data=json.dumps({"method": method, "params": params}))
     print(r.text)
     log.info(f"push_to_chain Response: {r}\n\n-- Response content {r.content}\n\n-- As text: {r.text}")
-    return r
+    return json.loads(r.text)["billCreationTxid"]
 
 
 def render_spec_hash(_s):
@@ -58,6 +58,7 @@ def render_spec_hash(_s):
 def update_ballotspecs(id, short_title, question, description, start_date, chamber, sponsor):
     db = _get_client()[mongosettings[MONGODB]]
     ballotspecs_collection = db[mongosettings[BALLOTSPECSCOLLECTION]]
+    bills_collection = db[mongosettings[BILLSCOLLECTION]]
 
     input_dict = {
         ID: id,
@@ -82,9 +83,12 @@ def update_ballotspecs(id, short_title, question, description, start_date, chamb
     ballot_spec_sz = json.dumps(ballotspec_dict)
     bs_h = hash_ballotspec(ballot_spec_sz)
 
+    bills_collection.update_one({'_id': id},
+                                {"$set": {"data.yes": result_doc["yes"]}})
+
     try:
         # Post to API => posts the blockchain
-        push_to_chain("ballot_publish", {
+        TxID = push_to_chain("ballot_publish", {
             "specHash": render_spec_hash(id),
             "ballotSpec": ballot_spec_sz,
             "realSpecHash": bs_h
@@ -97,6 +101,12 @@ def update_ballotspecs(id, short_title, question, description, start_date, chamb
         ballotspecs_collection.insert_one(
             {'_id': input_dict["id"],
              'data': input_dict,
-             BALLOTSPEC_HASH: bs_h})
+             BALLOTSPEC_HASH: bs_h,
+             "tx_id" : TxID,
+             "specHash": render_spec_hash(id),
+             "ballotSpec": ballot_spec_sz,
+             "realSpecHash": bs_h})
     except Exception as e:
         print(e)
+
+
