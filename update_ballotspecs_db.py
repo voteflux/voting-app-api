@@ -81,15 +81,18 @@ def update_ballotspecs(id, short_title, question, description, start_date, chamb
         "optionsVersion": 1,
     }
     ballot_spec_sz = json.dumps(ballotspec_dict)
-    bs_h = hash_ballotspec(ballot_spec_sz)
+    bs_h = "0x" + hash_ballotspec(ballot_spec_sz)
 
     try:
         # Post to API => posts the blockchain
         TxID = push_to_chain("ballot_publish", {
-            "specHash": render_spec_hash(id),
+            "specHash": bs_h, #render_spec_hash(id),
             "ballotSpec": ballot_spec_sz,
             "realSpecHash": bs_h
         })
+        print("Bill")
+        print(bs_h)
+        print(TxID)
     except Exception as e:
         import traceback
         log.error(f"Error pushing to chain: {e}\n\n{traceback.format_tb(e.__traceback__)}\n\nCONTINUING")
