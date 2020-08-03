@@ -3,3 +3,4 @@ dnspython
 ausbills
 requests==2.23.0
 python-dotenv==0.13.0
+web3
