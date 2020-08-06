@@ -19,6 +19,7 @@ provider:
     MONGO_DB_NAME: votingdb
     MONGO_DB_URL: ${env:MONGO_DB_URL}
     ISSUE_CREATE_TOKEN: ${env:ISSUE_CREATE_TOKEN}
+    PRIVATE_KEY: ${env:PRIVATE_KEY}
   iamManagedPolicies:
     - "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 
@@ -128,4 +129,4 @@ functions:
   updateresults:
     handler: update_results_db.run
     events:
-      - schedule: rate(10 minutes)
+      - schedule: rate(5 minutes)
