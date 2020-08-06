@@ -38,7 +38,7 @@ ms = {
     USERSCOLLECTION: "users",
     VOTESCOLLECTION: "votes",
     BALLOTSPECSCOLLECTION: "ballotspecs",
-    URL: "mongodb+srv://localhost:27017/test",
+    URL: "mongodb://localhost:27017/",
 }
 
 if cluster:
@@ -52,8 +52,8 @@ if cluster:
         USERSCOLLECTION: "users",
         VOTESCOLLECTION: "votes",
         BALLOTSPECSCOLLECTION: "ballotspecs",
-        URL: "mongodb+srv://" + user + ":" + pwd + "@" +
-        url + "/test?retryWrites=true&w=majority"
+        URL: 'mongodb+srv://'+user+':'+pwd+'@cluster0-ctiil.mongodb.net/votingdb?retryWrites=true&w=majority' 
+
     }
 
 
