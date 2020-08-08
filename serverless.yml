@@ -23,6 +23,14 @@ provider:
   iamManagedPolicies:
     - "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 
+
+package:
+  individually: true
+  exclude:
+    - node_modules/**
+    - venv/**
+
+
 functions:
   getbill:
     handler: bill/get.get
