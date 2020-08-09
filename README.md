@@ -82,9 +82,8 @@ Add aws creds:
 aws configure
 ```
 
-Link MongoDB cluster to aws - todo
-
 Deploy to aws:
+
 
 ```
 serverless deploy
@@ -92,24 +91,6 @@ serverless deploy
 
 ## Public Contracts
 
-Local Dev:
-
-```
-
-   ┌──────────────────────────────────────────────────────────────────────────────┐
-   │                                                                              │
-   │   GET  | http://localhost:3000/dev/bill/{id}                                 │
-   │   GET  | http://localhost:3000/dev/bill                                      │
-   │   GET  | http://localhost:3000/dev/issue/{id}                                │
-   │   GET  | http://localhost:3000/dev/issue                                     │
-   │   GET  | http://localhost:3000/dev/shitchain/{id}                            │
-   │   GET  | http://localhost:3000/dev/shitchain                                 │
-   │   POST | http://localhost:3000/dev/shitchain                                 │
-   │   GET  | http://localhost:3000/dev/result/{id}                               │
-   │   GET  | http://localhost:3000/dev/result                                    │
-   │                                                                              │
-   └──────────────────────────────────────────────────────────────────────────────┘
-```
 
 AWS Dev:
 
@@ -120,12 +101,45 @@ endpoints:
   GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/issue/{id}
   GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/issue
   POST - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/issue
+  GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/result/{id}
+  GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/result
+  GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/spec/{id}
+  GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/spec
+```
+
+#### Issues
+
+To Create a new Issue, `POST` to:
+
+```
+https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/issue
+```
+
+with example body:
+
+```json
+{"token":"YOURTOKENHERE",
+   "data": {"chamber": "Public",
+            "short_title": "Independent Anti-corruption Commsion",
+            "start_date": "2019-05-01",
+            "end_date": "2020-05-30",
+            "question": "Should an independent Federal ICAC be created?",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+            "sponsor": "Freedom Lobby Group"}}
+```
+
+#### Shitchain (Depreciated!)
+
+
+**Depreciated** (For you @bazmatic ):
+
+
+```
   GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/shitchain/{id}
   GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/shitchain
   POST - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/shitchain
-  GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/result/{id}
-  GET - https://1j56c60pb0.execute-api.ap-southeast-2.amazonaws.com/dev/result
 ```
+
 
 Where `{id}` is the bill/issue id
 
@@ -145,50 +159,4 @@ with example body:
    "constituency": "Australia",
    "vote": "no"
  }
-```
-
-
-To Create a new Issue, `POST` to:
-
-```
-http://localhost:3000/dev/issue
-```
-
-with example body:
-
-```json
-{"token":"YOURTOKENHERE",
-   "data": {"chamber": "Public",
-            "short_title": "Independent Anti-corruption Commsion",
-            "start_date": "2019-05-01",
-            "end_date": "2020-05-30",
-            "question": "Should an independent Federal ICAC be created?",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-            "sponsor": "Freedom Lobby Group"}}
-```
-
-
-## Lambdas
-
-### Bills
-
-Update bills once a day around 5 am by running:
-
-```
-python3 update_bills_db.py
-```
-
-
-### Issues
-
-Can update issues collecting via api
-
-- To do
-
-### Results
-
-Count votes every 15 mins and update results collections
-
-```
-python3 update_results_db.py
 ```
