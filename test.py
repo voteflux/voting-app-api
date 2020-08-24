@@ -1,2 +1,2 @@
-from update_bills_db import run
+from update_results_db import run
 run(None, None)
