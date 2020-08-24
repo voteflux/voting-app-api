@@ -6,6 +6,7 @@ import os
 from ausbills.federal_parliment import all_bills, Bill
 import json
 from update_ballotspecs_db import update_ballotspecs
+from tag_topics import tag_bill
 
 
 # Connection String
@@ -33,6 +34,8 @@ def run(event, context):
         bill = Bill(url)
         # Standed keys
         bill.data["question"] = "Should this bill be passed into law?"
+        bill.data["topics"] = tag_bill(bill.data)
+        print(bill.data["topics"])
         bill.data["description"] = bill.data.pop("summary")
         if bill.data["chamber"] == "House":
             bill.data["start_date"] = bill.data["intro_house"]
