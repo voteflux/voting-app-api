@@ -35,7 +35,6 @@ def run(event, context):
         # Standed keys
         bill.data["question"] = "Should this bill be passed into law?"
         bill.data["topics"] = tag_bill(bill.data)
-        print(bill.data["topics"])
         bill.data["description"] = bill.data.pop("summary")
         if bill.data["chamber"] == "House":
             bill.data["start_date"] = bill.data["intro_house"]
