@@ -16,7 +16,7 @@ pwd = os.environ['MONGO_DB_PASS']
 url = os.environ['MONGO_DB_URL']
 ISSUE_TOKEN = os.environ['ISSUE_CREATE_TOKEN']
 
-print(user, url, pwd)
+# print(user, url, pwd)
 if user is not None and pwd is not None:
     cluster = True
 else:
