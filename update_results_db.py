@@ -19,7 +19,10 @@ CONSTITUENCY = "Australia"
 
 
 def get_votes(spec_hash):
-    (yes, no) = get_votes_from_blochchain(spec_hash)
+    try:
+        (yes, no) = get_votes_from_blochchain(spec_hash)
+    except Exception as e:
+        (yes, no) = (1, 1)
     if yes == 0:
         yes = 1
     if no == 0:
