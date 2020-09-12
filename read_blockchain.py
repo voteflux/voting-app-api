@@ -18,9 +18,10 @@ def get_votes_from_blochchain(spec_hash):
     VotingAlpha = w3.eth.contract(address=CONTRACT_ADDRESS, abi=abi)
 
     w3.middleware_onion.add(construct_sign_and_send_raw_middleware(acct.privateKey))
-    p_id = VotingAlpha.functions.getProposalId(spec_hash).call()
+    print(spec_hash)
+    p_id = VotingAlpha.functions.getProposalId(spec_hash.replace("0x0x","0x")).call()
     proposalInfo = VotingAlpha.functions.getProposal(p_id).call()
 
-    # print("No votes:", proposalInfo[3])
-    # print("Yes votes:", proposalInfo[4])
+    print("No votes:", proposalInfo[3])
+    print("Yes votes:", proposalInfo[4])
     return(proposalInfo[4], proposalInfo[3])
