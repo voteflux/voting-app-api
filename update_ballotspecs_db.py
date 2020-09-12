@@ -81,7 +81,7 @@ def update_ballotspecs(id, short_title, question, description, start_date, chamb
         "optionsVersion": 1,
     }
     ballot_spec_sz = json.dumps(ballotspec_dict)
-    bs_h = "0x" + hash_ballotspec(ballot_spec_sz)
+    bs_h = hash_ballotspec(ballot_spec_sz)
 
     try:
         # Post to API => posts the blockchain
@@ -102,8 +102,8 @@ def update_ballotspecs(id, short_title, question, description, start_date, chamb
             {'_id': input_dict["id"],
              'data': input_dict,
              BALLOTSPEC_HASH: bs_h,
-             "tx_id" : TxID,
-             "specHash": render_spec_hash(id),
+            #  "tx_id" : TxID,
+             "specHash": bs_h,
              "ballotSpec": ballot_spec_sz,
              "realSpecHash": bs_h})
     except Exception as e:
