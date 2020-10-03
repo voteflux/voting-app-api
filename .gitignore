@@ -1,3 +1,6 @@
 node_modules
 *.pyc
 bill/__pycache__/
+__pycache__
+.idea
+.venv
