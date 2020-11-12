@@ -3,6 +3,6 @@ dnspython
 lxml
 beautifulsoup4
 ausbills==0.2.2
-requests==2.23.0
+requests==2.25.0
 python-dotenv==0.13.0
 web3
