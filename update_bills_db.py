@@ -9,27 +9,17 @@ from update_ballotspecs_db import update_ballotspecs
 from tag_topics import tag_bill
 
 
-# Connection String
-client = pymongo.MongoClient(mongosettings[URL])
-db = client[mongosettings[MONGODB]]
-bills_collection = db[mongosettings[BILLSCOLLECTION]]
-
-
-# dummy function, waiting for votes to be counted on the blockchain.
-def get_votes(id):
-    return(500 + int(random.random()*1000), 500 + int(random.random()*1000))
-
-
-naughty_words = ['corona', 'covid']
-# print(all_bills)
-
-bad_bills = []
-
-
 def run(event, context):
+    # Connection String
+    client = pymongo.MongoClient(mongosettings[URL])
+    db = client[mongosettings[MONGODB]]
+    bills_collection = db[mongosettings[BILLSCOLLECTION]]
+    # ! this is a quick fix for the google ban on covid apps
+    naughty_words = ['corona', 'covid']
+    bad_bills = []
     for i in range(len(all_bills)):
         post = True
-        print(all_bills[i]["id"])
+        # print(all_bills[i]["id"])
         url = all_bills[i]["url"]
         bill = Bill(url)
         # Standed keys
